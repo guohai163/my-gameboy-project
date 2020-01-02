@@ -1,6 +1,6 @@
 #include <gb/gb.h>
 #include <stdio.h>
-#include "SmileSprites.c"
+#include "SmileSprites.h"
 
 void main()
 {
