@@ -15,16 +15,42 @@ void main()
     SHOW_SPRITES;
 
     while(1){
-        if(currentspriteindex == 0){
-            currentspriteindex = 1;
-        }
-        else{
-            currentspriteindex =0;
-        }
-        set_sprite_tile(0, currentspriteindex);
         //延迟1000毫秒
-        delay(1000);
-        //相对于当前位置移动精灵
-        scroll_sprite(0,10,0);
+        delay(100);
+        //根据方向键来移动精灵
+        switch (joypad())
+        {
+            case J_A:
+                currentspriteindex = currentspriteindex == 0?1:0;
+                set_sprite_tile(0, currentspriteindex);
+                break;
+            case J_LEFT:
+                scroll_sprite(0,-1,0);
+                break;
+            case J_RIGHT:
+                scroll_sprite(0,1,0);
+                break;
+            case J_UP:
+                scroll_sprite(0, 0,-1);
+                break;
+            case J_DOWN:
+                scroll_sprite(0,0,1);
+                break;
+            case J_LEFT ^ J_UP:
+                scroll_sprite(0,-1,-1);
+                break;
+            case J_LEFT ^ J_DOWN:
+                scroll_sprite(0, -1, 1);
+                break;
+            case J_RIGHT ^ J_DOWN:
+                scroll_sprite(0, 1,1);
+                break;
+            case J_RIGHT ^ J_UP:
+                scroll_sprite(0,1,-1);
+                break;
+            default:
+                break;
+        }
+        
     }
 }
