@@ -9,7 +9,7 @@ all:	$(BINS)
 %.o:	%.c
 	$(CC) -c -o $@ $<
 
-%.gb:	main.o SmileSprites.o
+%.gb:	main.o BoyAndGirl.o
 	$(CC) -o $@ $^
 
 
