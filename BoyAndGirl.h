@@ -9,8 +9,8 @@
   Format               : Gameboy 4 color.
   Compression          : None.
   Counter              : None.
-  Tile size            : 8 x 8
-  Tiles                : 0 to 7
+  Tile size            : 16 x 16
+  Tiles                : 0 to 23
 
   Palette colors       : None.
   SGB Palette          : None.

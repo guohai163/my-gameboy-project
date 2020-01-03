@@ -4,9 +4,8 @@
 
 void main()
 {
-    UINT8 currentspriteindex = 0;
+    UINT8 currentspriteindex = 4;
     SPRITES_8x16;
-    printf("TEST");
     //设置图块图案
     set_sprite_data(0, 8, BoyGirl);
     //在子画面上0上，显示 精灵索引
@@ -29,7 +28,7 @@ void main()
             case J_LEFT:
                 scroll_sprite(0,-1,0);
                 scroll_sprite(1,-1,0);
-                currentspriteindex = currentspriteindex == 0?4:0;
+                currentspriteindex = currentspriteindex == 4?8:4;
                 set_sprite_tile(0, currentspriteindex);
                 set_sprite_tile(1, currentspriteindex+2);
                 break;
@@ -56,7 +55,7 @@ void main()
                 scroll_sprite(0,1,-1);
                 break;
             default:
-                currentspriteindex = 0;
+                currentspriteindex = 4;
                 set_sprite_tile(0, currentspriteindex);
                 set_sprite_tile(1, currentspriteindex+2);
                 break;
