@@ -5,12 +5,12 @@
 void main()
 {
 
-    UINT8 currentspriteindex = 0;
+    UINT8 currentspriteindex = 4;
     //设置精灵的方向
     INT8 spritediretion=1;
     SPRITES_8x16;
     //设置图块图案
-    set_sprite_data(0, 8, BoyGirl);
+    set_sprite_data(0, 16, BoyGirl);
     //在子画面上0上，显示 精灵索引
     set_sprite_tile(0, currentspriteindex);
     move_sprite(0, 28, 108);
@@ -35,7 +35,7 @@ void main()
                 }
                 scroll_sprite(0,-1,0);
                 scroll_sprite(1,-1,0);
-                currentspriteindex = currentspriteindex == 0?4:0;
+                currentspriteindex = currentspriteindex == 4?8:4;
                 set_sprite_tile(0, currentspriteindex);
                 set_sprite_tile(1, currentspriteindex+2);
                 set_sprite_prop(0,0);
@@ -49,7 +49,7 @@ void main()
                 }
                 set_sprite_prop(0,S_FLIPX);
                 set_sprite_prop(1,S_FLIPX);
-                currentspriteindex = currentspriteindex == 0?4:0;
+                currentspriteindex = currentspriteindex == 4?8:4;
                 set_sprite_tile(0, currentspriteindex);
                 set_sprite_tile(1, currentspriteindex+2);
                 scroll_sprite(0,1,0);
@@ -75,7 +75,7 @@ void main()
                 scroll_sprite(0,1,-1);
                 break;
             default:
-                currentspriteindex = 0;
+                currentspriteindex = 4;
                 set_sprite_tile(0, currentspriteindex);
                 set_sprite_tile(1, currentspriteindex+2);
                 break;
