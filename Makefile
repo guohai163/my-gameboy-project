@@ -9,10 +9,10 @@ all:	$(BINS)
 %.o:	%.c
 	$(CC) -c -o $@ $<
 
-%.gb:	main.o BoyAndGirl.o
+%.gb:	main.o BoyAndGirl.o text.o RewardCard.o
 	$(CC) -o $@ $^
 
 
 
 clean:
-	rm -f *.o *.lst *.map *.gb *~ *.rel *.cdb *.ihx *.lnk *.sym *.asm *.gbr
+	rm -f *.o *.lst *.map *.gb *~ *.rel *.cdb *.ihx *.lnk *.sym *.asm
