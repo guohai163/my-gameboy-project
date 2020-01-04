@@ -110,13 +110,14 @@ void main()
                 set_sprite_tile(0, currentspriteindex);
                 set_sprite_tile(1, currentspriteindex+2);
 
-                roleposition+=2;
+                
                 if(roleposition>= 80 ){
                     scroll_bkg(1,0);
                 }
                 else{
                     scroll_sprite(0,2,0);
                     scroll_sprite(1,2,0);
+                    roleposition+=2;
                 }
                 calendardisplay();
                 break;
