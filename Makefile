@@ -1,6 +1,6 @@
 CC	= /opt/gbdk/bin/lcc -Wa-l -Wl-m -Wl-j
 
-BINS	= main.gb
+BINS	= OurWorld.gb
 
 all:	$(BINS)
 
@@ -9,7 +9,7 @@ all:	$(BINS)
 %.o:	%.c
 	$(CC) -c -o $@ $<
 
-%.gb:	main.o BoyAndGirl.o RewardCard.o Ground.o Background.o
+%.gb:	OurWorld.o BoyAndGirl.o RewardCard.o Ground.o Background.o GameRole.o
 	$(CC) -o $@ $^
 
 
