@@ -7,6 +7,10 @@
 
 #include "GameRole.h"
 
+//开始界面
+#include "ourworld_data.c"
+#include "ourworld_map.c"
+
 struct GameRole role1;
 struct GameRole role2;
 //设置展示日期
@@ -65,7 +69,8 @@ void initRole1(UINT8 x, UINT8 y) {
 /**
  * 初始化数据
  */
-void initscreen(){
+void initscreen()
+{
     //设置瓦块图案
     set_sprite_data(0, 16, BoyGirl);
     //初始化精灵
@@ -82,7 +87,8 @@ void initscreen(){
 /**
  * 休眠指定次数
  */
-void performantdelay(UINT8 numloops){
+void performantdelay(UINT8 numloops)
+{
     UINT8 i=0;
     for (   ; i < numloops; i++)
     {
@@ -90,10 +96,24 @@ void performantdelay(UINT8 numloops){
     }
     
 }
+
+/**
+ * @brief 开始界面
+ * 
+ */
+void start_inteface()
+{
+    set_bkg_data(0,226,ourworld_data);
+    set_bkg_tiles(0,0,20,18,ourworld_map);
+    SHOW_BKG;
+    waitpad(J_START);
+    HIDE_BKG;
+}
 void main()
 {
 
     SPRITES_8x16;
+    start_inteface();
     initscreen();
 
     SHOW_SPRITES;
