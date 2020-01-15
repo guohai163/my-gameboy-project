@@ -2,3 +2,8 @@
 *.gb
 *.lst
 *.sym
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
