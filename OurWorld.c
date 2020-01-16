@@ -18,6 +18,8 @@ UINT16 year = 1982;
 UINT8 month = 12;
 UINT8 count = 0;
 
+UINT8 screen_position_x = 0;
+
 /**
  * 日历计算方法，并进行展示.
  */
@@ -46,7 +48,8 @@ void calendardisplay(){
 /**
  * 初始化role1，
  */
-void initRole1(UINT8 x, UINT8 y) {
+void initRole1(UINT8 x, UINT8 y) 
+{
     role1.x = 0;
     role1.y = 0;
     role1.width = 16;
@@ -62,6 +65,28 @@ void initRole1(UINT8 x, UINT8 y) {
     // set_sprite_prop(1,S_FLIPX);
     role1.direction = 4;
     movegamecharacter(&role1,x,y);
+    role1.x = x;
+    role1.y = y;
+}
+
+/**
+ * 初始化角色2
+ */
+void initRole2(UINT8 x,UINT8 y)
+{
+    role2.x = 0;
+    role2.y = 0;
+    role2.width = 16;
+    role2.height = 16;
+    role2.spritrun[0] = 12;
+    role2.spritrun[1] = 16;
+    role2.spite_run_status = 0;
+    set_sprite_tile(0, role2.spritrun[role2.spite_run_status]);
+    role1.spritids[0] = 0;
+    set_sprite_tile(1, role2.spritrun[role2.spite_run_status]+2);
+    role1.spritids[1] = 1;
+    role1.direction = 4;
+    movegamecharacter(&role2,x,y);
     role1.x = x;
     role1.y = y;
 }
@@ -103,9 +128,17 @@ void performantdelay(UINT8 numloops)
  */
 void start_inteface()
 {
+    UINT8 i=18;
     set_bkg_data(0,226,ourworld_data);
     set_bkg_tiles(0,0,20,18,ourworld_map);
     SHOW_BKG;
+    // while (i>0)
+    // {
+    //     scroll_bkg(0,-2);
+    //     i-=2;
+    //     performantdelay(5);
+    // }
+    
     waitpad(J_START);
     HIDE_BKG;
 }
@@ -123,7 +156,12 @@ void main()
     
     while(1){
         
-        
+        //处理1985年2号主角出现的平台问题
+        if(year>=1983 && Ground[0x100+(screen_position_x-8)/8]==0x00)
+        {
+            Ground[0x100+(screen_position_x-8)/8]=screen_position_x/8%4+0x13;
+            set_bkg_tiles(0,0,32,18,Ground);
+        }
         //延迟1000毫秒
         performantdelay(5);
         //根据方向键来移动精灵
@@ -139,6 +177,8 @@ void main()
                 if(role1.x >= 80) {
                     movegamecharacter(&role1,role1.x,role1.y);
                     scroll_bkg(1,0);
+                    screen_position_x++;
+                    // screen_position_x = screen_position_x%32;
                 }
                 else {
                     movegamecharacter(&role1,role1.x+2,role1.y);
