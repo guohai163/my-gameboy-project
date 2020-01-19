@@ -162,9 +162,16 @@ void main()
             Ground[0x100+(screen_position_x-8)/8]=screen_position_x/8%4+0x13;
             set_bkg_tiles(0,0,32,18,Ground);
         }
-        if(year==1983 && month==11 && role2.direction==0)
+        if(year==1985 && month==11 && role2.direction==0)
         {
-            initRole2(role1.x,64);
+            initRole2(0,64);
+            while (role2.x<role1.x)
+            {
+                movegamecharacter(&role2,role2.x+2,role2.y);
+                role2.x += 2 ;
+                performantdelay(5);
+            }
+            
         }
         //延迟1000毫秒
         performantdelay(5);
@@ -175,6 +182,13 @@ void main()
                 if(role1.x>16){
                     movegamecharacter(&role1,role1.x-2,role1.y);
                     role1.x -= 2 ;
+                    if(role2.direction!=0)
+                    {
+                        movegamecharacter(&role2,role2.x-2,role2.y);
+                        role2.x -= 2 ;
+                    }
+                    
+                    
                 }
                 break;
             case J_RIGHT:
@@ -182,7 +196,7 @@ void main()
                     movegamecharacter(&role1,role1.x,role1.y);
                     if(role2.direction!=0)
                     {
-movegamecharacter(&role2,role2.x,role2.y);
+                        movegamecharacter(&role2,role2.x,role2.y);
                     }
                     
                     scroll_bkg(1,0);
@@ -192,6 +206,13 @@ movegamecharacter(&role2,role2.x,role2.y);
                 else {
                     movegamecharacter(&role1,role1.x+2,role1.y);
                     role1.x +=2;
+                    if(role2.direction!=0)
+                    {
+                        movegamecharacter(&role2,role2.x+2,role2.y);
+                        role2.x+=2;
+                    }
+                    
+                    
                 }
                 calendardisplay();
                 break;
