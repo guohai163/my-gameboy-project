@@ -1,6 +1,6 @@
 /*
 
- BOYANDGIRL.H
+ R1_R2.H
 
  Include File.
 
@@ -9,8 +9,8 @@
   Format               : Gameboy 4 color.
   Compression          : None.
   Counter              : None.
-  Tile size            : 16 x 16
-  Tiles                : 0 to 23
+  Tile size            : 8 x 16
+  Tiles                : 0 to 11
 
   Palette colors       : None.
   SGB Palette          : None.
@@ -24,8 +24,8 @@
 
 
 /* Bank of tiles. */
-#define BoyGirlBank 0
+#define boy_girlBank 0
 /* Start of tile array. */
-extern unsigned char BoyGirl[];
+extern unsigned char boy_girl[];
 
-/* End of BOYANDGIRL.H */
+/* End of R1_R2.H */

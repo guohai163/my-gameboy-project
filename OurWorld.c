@@ -1,6 +1,6 @@
 #include <gb/gb.h>
 #include <stdio.h>
-#include "BoyAndGirl.h"
+#include "r1_r2.h"
 #include "RewardCard.h"
 #include "Background.h"
 #include "Ground.h"
@@ -81,14 +81,14 @@ void initRole2(UINT8 x,UINT8 y)
     role2.spritrun[0] = 12;
     role2.spritrun[1] = 16;
     role2.spite_run_status = 0;
-    set_sprite_tile(0, role2.spritrun[role2.spite_run_status]);
-    role1.spritids[0] = 0;
-    set_sprite_tile(1, role2.spritrun[role2.spite_run_status]+2);
-    role1.spritids[1] = 1;
-    role1.direction = 4;
+    set_sprite_tile(2, role2.spritrun[role2.spite_run_status]);
+    role2.spritids[0] = 2;
+    set_sprite_tile(3, role2.spritrun[role2.spite_run_status]+2);
+    role2.spritids[1] = 3;
+    role2.direction = 4;
     movegamecharacter(&role2,x,y);
-    role1.x = x;
-    role1.y = y;
+    role2.x = x;
+    role2.y = y;
 }
 
 /**
@@ -97,7 +97,7 @@ void initRole2(UINT8 x,UINT8 y)
 void initscreen()
 {
     //设置瓦块图案
-    set_sprite_data(0, 16, BoyGirl);
+    set_sprite_data(0, 20, boy_girl);
     //初始化精灵
     initRole1(28,112);
 
@@ -162,6 +162,10 @@ void main()
             Ground[0x100+(screen_position_x-8)/8]=screen_position_x/8%4+0x13;
             set_bkg_tiles(0,0,32,18,Ground);
         }
+        if(year==1983 && month==11 && role2.direction==0)
+        {
+            initRole2(role1.x,64);
+        }
         //延迟1000毫秒
         performantdelay(5);
         //根据方向键来移动精灵
@@ -176,6 +180,11 @@ void main()
             case J_RIGHT:
                 if(role1.x >= 80) {
                     movegamecharacter(&role1,role1.x,role1.y);
+                    if(role2.direction!=0)
+                    {
+movegamecharacter(&role2,role2.x,role2.y);
+                    }
+                    
                     scroll_bkg(1,0);
                     screen_position_x++;
                     // screen_position_x = screen_position_x%32;
