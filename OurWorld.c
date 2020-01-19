@@ -97,7 +97,7 @@ void initRole2(UINT8 x,UINT8 y)
 void initscreen()
 {
     //设置瓦块图案
-    set_sprite_data(0, 20, boy_girl);
+    set_sprite_data(0, 28, boy_girl);
     //初始化精灵
     initRole1(28,112);
 
