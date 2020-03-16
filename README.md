@@ -1,6 +1,9 @@
 ## 我的第一个Gameboy学习项目
 
-![IMG_2228.TRIM.gif](assets/IMG_2228.TRIM.gif)
+![IMG_2228.TRIM.gif](assets/IMG_2228.TRIM.gif) 
+
+[课程链接](http://blog.guohai.org/category/gameboy)
+
 
 ### 更新日志
 
